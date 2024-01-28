@@ -1,9 +1,9 @@
 import Todoitem from "./Todoitem"
-const Todoitems=({todoitems}) =>{
+const Todoitems=({todoName,TodoDate}) =>{
   return <>
   
   <div>
-    {todoitems.map(items=><Todoitem todoname={items.name} tododate={items.duedate} ></Todoitem>)}
+    <Todoitem todoName={todoName} TodoDate={TodoDate} ></Todoitem>
   
   
 

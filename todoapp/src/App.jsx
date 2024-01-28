@@ -4,42 +4,44 @@ import Enteries from './Components/Enteries'
 
 import Todoitems from './Components/Todoitems';
 import "./App.css";
+import { useState } from 'react';
 function App() {
+let [todoName,setTodoName]=useState("Buy Milk"); 
+let [todoDate,setTodoDate]=useState("4/10/23");
+
+const handleOnClick=()=>{
+alert("Clicked");
+}
+
+const handleOnChange=(event)=>{
+if(event.key==='enter'){}
+  let NewItem=event.target.value;
+console.log(NewItem)
+setTodoName(NewItem)
 
 
-  const todoitems=
- [
-  {
-  name:"Buy Milk",
-  duedate:"4/10/2023",
- },
- {
- name: "Go to College",
- duedate: "4/10/2023",
-},
-{
-  name: "Play Time",
-  duedate: "4/10/2023",
-
-},
-];
-
+}
  
-
 
  
  
  return<>
  <center className='tudo-container'>
  <AppName></AppName>
-  <br/>
+  
   <div className="row">
-  <Enteries></Enteries>
+  <Enteries handleOnClick={handleOnClick}
+  handleOnChange={handleOnChange}
+  
+  
+  ></Enteries>
   </div>
 
-<div>
-<Todoitems todoitems={todoitems}></Todoitems>
-</div>
+
+<Todoitems todoName={todoName}
+todoDate={todoDate}
+></Todoitems>
+
  </center> 
  </>
  };
