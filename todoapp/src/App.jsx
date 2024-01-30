@@ -6,21 +6,35 @@ import Todoitems from './Components/Todoitems';
 import "./App.css";
 import { useState } from 'react';
 function App() {
-let [todoName,setTodoName]=useState("Buy Milk"); 
-let [todoDate,setTodoDate]=useState("4/10/23");
+ 
+ 
 
-const handleOnClick=()=>{
-alert("Clicked");
+
+
+
+
+  let [todoitems,settodoitems]=useState( [
+    {
+     todoName:"Buy Milk",
+     todoDate:"4/10/2023",
+   },
+   {
+     todoName: "Go to College",
+     todoDate: "4/10/2023",
+  },
+  {
+   todoName: "Play Time",
+   todoDate: "4/10/2023",
+  
+  },
+  ]); 
+const handleNewItem=(todoName,todoDate)=>{
+
+
+
 }
+ 
 
-const handleOnChange=(event)=>{
-if(event.key==='enter'){}
-  let NewItem=event.target.value;
-console.log(NewItem)
-setTodoName(NewItem)
-
-
-}
  
 
  
@@ -30,16 +44,15 @@ setTodoName(NewItem)
  <AppName></AppName>
   
   <div className="row">
-  <Enteries handleOnClick={handleOnClick}
-  handleOnChange={handleOnChange}
-  
+  <Enteries 
+  handleNewItem={handleNewItem}
   
   ></Enteries>
   </div>
 
 
-<Todoitems todoName={todoName}
-todoDate={todoDate}
+<Todoitems todoitems={todoitems}
+
 ></Todoitems>
 
  </center> 

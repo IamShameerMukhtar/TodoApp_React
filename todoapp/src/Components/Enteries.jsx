@@ -1,11 +1,54 @@
-function Enteries({handleOnClick,handleOnChange}){
-return <div class="container text-center">
+import { useState } from "react"
+function Enteries({handleNewItem}){
+
+  const [todoName,setTodoName] = useState();
+  const [todoDate,setTodoDate] = useState();
+
+const handleNameChange=(event)=>{
+
+setTodoName(event.target.value)
+
+}
+const handleDateChange=(event)=>{
+
+
+setTodoDate(event.target.value)
+}
+
+const handleAddButtonClicked=()=>{
+handleNewItem(todoName,todoDate)
+setTodoDate("")
+setTodoName("")
+
+}
+
+
+
+
+return <div classna="container text-center">
 
 <div className="row kgrow">
-  <div className="col-6"><input type="text"placeholder="Enter Todo here" onChange={handleOnChange} ></input></div>
-  <div className="col-4"><input type="date"></input></div>
+  <div className="col-6"><input type="text"placeholder="Enter Todo here"
+   onChange={handleNameChange}
+    value={todoName}
+    ></input></div>
+  
+  
+  
+  
+  
+  
+  <div className="col-4"><input type="date" 
+  onChange={handleDateChange} 
+  value={todoDate}
+  ></input></div>
+  
+  
+  
+  
+  
   <div className="col-2"><button type="button" className="btn btn-success kg-button"
-  onClick={handleOnClick}
+  onClick={handleAddButtonClicked}
   
   >Add</button></div>
 </div>
