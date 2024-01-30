@@ -8,8 +8,6 @@ import { useState } from 'react';
 import CheckItems from './Components/CheckItems';
 function App() {
  
- 
-
 
 
 
@@ -29,6 +27,13 @@ function App() {
   
   },
   ]); 
+
+const deleteEntry=()=>{
+
+  
+}
+
+
 
 
 
@@ -53,7 +58,7 @@ function App() {
  <AppName></AppName>
   <CheckItems todoitems={todoitems}></CheckItems>
   <Enteries handleNewItem={handleNewItem}></Enteries>
-   <Todoitems todoitems={todoitems}></Todoitems>
+   <Todoitems todoitems={todoitems} ></Todoitems>
 
  </center> 
  </>
