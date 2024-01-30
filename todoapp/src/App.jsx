@@ -5,6 +5,7 @@ import Enteries from './Components/Enteries'
 import Todoitems from './Components/Todoitems';
 import "./App.css";
 import { useState } from 'react';
+import CheckItems from './Components/CheckItems';
 function App() {
  
  
@@ -48,19 +49,11 @@ function App() {
  
  return<>
  <center className='tudo-container'>
+ 
  <AppName></AppName>
-  
-  <div className="row">
-  <Enteries 
-  handleNewItem={handleNewItem}
-  
-  ></Enteries>
-  </div>
-
-
-<Todoitems todoitems={todoitems}
-
-></Todoitems>
+  <CheckItems todoitems={todoitems}></CheckItems>
+  <Enteries handleNewItem={handleNewItem}></Enteries>
+   <Todoitems todoitems={todoitems}></Todoitems>
 
  </center> 
  </>
