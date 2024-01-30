@@ -28,8 +28,15 @@ function App() {
   
   },
   ]); 
-const handleNewItem=(todoName,todoDate)=>{
 
+
+
+  const handleNewItem=(todoName,todoDate)=>{
+   const newTodoItems=[...todoitems,{
+    
+     todoName: todoName ,
+     todoDate:todoDate}]
+     settodoitems(newTodoItems)
 
 
 }
