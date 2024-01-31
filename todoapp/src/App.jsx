@@ -13,40 +13,26 @@ function App() {
 
 
   let [todoitems,settodoitems]=useState( [
-    {
-     todoName:"Buy Milk",
-     todoDate:"4/10/2023",
-   },
-   {
-     todoName: "Go to College",
-     todoDate: "4/10/2023",
-  },
-  {
-   todoName: "Play Time",
-   todoDate: "4/10/2023",
-  
-  },
+    
   ]); 
 
-const deleteEntry=()=>{
-
-  
-}
 
 
 
 
+// Add Items
 
   const handleNewItem=(todoName,todoDate)=>{
-   const newTodoItems=[...todoitems,{
+  if(todoName.length>=1 && todoDate){
+    const newTodoItems=[...todoitems,{
     
      todoName: todoName ,
      todoDate:todoDate}]
      settodoitems(newTodoItems)
-
+    }
 
 }
- 
+ // Delete items using filter method
 const handleOnDeleteButton=(todoName,todoDate)=>{
    // filter method
    const  newTodoItem = todoitems.filter(item=>item.todoName!==todoName);
