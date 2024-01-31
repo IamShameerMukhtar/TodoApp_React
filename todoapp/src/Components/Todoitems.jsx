@@ -1,10 +1,7 @@
 import Todoitem from "./Todoitem"
-const Todoitems=({todoitems}) =>{
+const Todoitems=({todoitems,handleOnDeleteButton}) =>{
   
-  const handleOnDeleteButton=(todoName,todoDate)=>{
-    
-    
-     }
+  
     
   
   

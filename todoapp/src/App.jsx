@@ -47,7 +47,12 @@ const deleteEntry=()=>{
 
 }
  
-
+const handleOnDeleteButton=(todoName,todoDate)=>{
+   // filter method
+   const  newTodoItem = todoitems.filter(item=>item.todoName!==todoName);
+   settodoitems(newTodoItem)
+     
+}
  
 
  
@@ -58,7 +63,7 @@ const deleteEntry=()=>{
  <AppName></AppName>
   <CheckItems todoitems={todoitems}></CheckItems>
   <Enteries handleNewItem={handleNewItem}></Enteries>
-   <Todoitems todoitems={todoitems} ></Todoitems>
+   <Todoitems todoitems={todoitems} handleOnDeleteButton={handleOnDeleteButton}></Todoitems>
 
  </center> 
  </>
