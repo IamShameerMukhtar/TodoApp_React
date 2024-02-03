@@ -1,8 +1,9 @@
 import { useState } from "react"
+import { IoIosAdd } from "react-icons/io";
 function Enteries({handleNewItem}){
 
-  const [todoName,setTodoName] = useState();
-  const [todoDate,setTodoDate] = useState();
+  const [todoName,setTodoName] = useState("");
+  const [todoDate,setTodoDate] = useState("");
 
 const handleNameChange=(event)=>{
 
@@ -50,7 +51,8 @@ return <div classna="container text-center">
   <div className="col-2"><button type="button" className="btn btn-success kg-button"
   onClick={handleAddButtonClicked}
   
-  >Add</button></div>
+  ><IoIosAdd/>
+  </button></div>
 </div>
 </div>
 
