@@ -1,6 +1,11 @@
 import { MdDeleteSweep } from "react-icons/md";
+import { TodoItemsContext } from "../store/todo-items-store";
+import { useContext } from "react";
+function Todoitem({todoName,todoDate}){
+  const Contextobj=useContext(TodoItemsContext)
+  const handleOnDeleteButton=Contextobj.handleOnDeleteButton;
 
-function Todoitem({todoName,todoDate,handleOnDeleteButton}){
+
   return <div className="row kgrow">
   <div className="col-6">{todoName}</div>
   <div className="col-4" >{todoDate}</div>

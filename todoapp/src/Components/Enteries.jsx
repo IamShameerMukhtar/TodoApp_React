@@ -1,26 +1,24 @@
-import { useState } from "react"
+import { useRef} from "react"
 import { IoIosAdd } from "react-icons/io";
-function Enteries({handleNewItem}){
+import { TodoItemsContext } from "../store/todo-items-store";
+import { useContext } from "react";
+function Enteries(){
+  const Contextobj=useContext(TodoItemsContext)
+  const handleNewItem=Contextobj.handleNewItem;
+ 
+const todonameElements=useRef();
+const tododateElements=useRef();
 
-  const [todoName,setTodoName] = useState("");
-  const [todoDate,setTodoDate] = useState("");
 
-const handleNameChange=(event)=>{
 
-setTodoName(event.target.value)
+const handleAddButtonClicked=(event)=>{
+  event.preventDefault();
+const todoName= todonameElements.current.value
+const todoDate= tododateElements.current.value
 
-}
-const handleDateChange=(event)=>{
-//fsjkfjksfjksf
-
-setTodoDate(event.target.value)
-}
-
-const handleAddButtonClicked=()=>{
 handleNewItem(todoName,todoDate)
-setTodoDate("")
-setTodoName("")
-
+tododateElements.current.value=""
+todonameElements.current.value=""
 }
 
 
@@ -28,10 +26,13 @@ setTodoName("")
 
 return <div classna="container text-center">
 
-<div className="row kgrow">
+<form className="row kgrow"
+onSubmit={handleAddButtonClicked}
+>
   <div className="col-6"><input type="text"placeholder="Enter Todo here"
-   onChange={handleNameChange}
-    value={todoName}
+   
+  
+    ref={todonameElements}
     ></input></div>
   
   
@@ -40,20 +41,21 @@ return <div classna="container text-center">
   
   
   <div className="col-4"><input type="date" 
-  onChange={handleDateChange} 
-  value={todoDate}
+
+ 
+  ref={tododateElements}
   ></input></div>
   
   
   
   
   
-  <div className="col-2"><button type="button" className="btn btn-success kg-button"
-  onClick={handleAddButtonClicked}
+  <div className="col-2"><button  className="btn btn-success kg-button"
+  
   
   ><IoIosAdd/>
   </button></div>
-</div>
+</form>
 </div>
 
 

@@ -1,6 +1,6 @@
 import AppName from './Components/AppName'
 import Enteries from './Components/Enteries'
-
+import { TodoItemsContext } from './store/todo-items-store';
 
 import Todoitems from './Components/Todoitems';
 import "./App.css";
@@ -24,11 +24,19 @@ function App() {
 
   const handleNewItem=(todoName,todoDate)=>{
   if(todoName.length>=1 && todoDate){
-    const newTodoItems=[...todoitems,{
     
-     todoName: todoName ,
-     todoDate:todoDate}]
-     settodoitems(newTodoItems)
+     settodoitems((currValue)=>{
+      const newTodoItem=[...currValue,{
+    
+        todoName: todoName ,
+        todoDate:todoDate}];
+        return newTodoItem;
+
+
+     })
+    
+    
+    
     }
 
 }
@@ -41,17 +49,23 @@ const handleOnDeleteButton=(todoName,todoDate)=>{
 }
  
 
- 
+
  
  return<>
- <center className='tudo-container'>
+ <TodoItemsContext.Provider value={{
+  todoitems:todoitems,
+  handleNewItem:handleNewItem,handleOnDeleteButton:handleOnDeleteButton}}>
  
+ 
+ <center className='tudo-container'>
+
  <AppName></AppName>
-  <CheckItems todoitems={todoitems}></CheckItems>
-  <Enteries handleNewItem={handleNewItem}></Enteries>
-   <Todoitems todoitems={todoitems} handleOnDeleteButton={handleOnDeleteButton}></Todoitems>
+  <CheckItems></CheckItems>
+  <Enteries ></Enteries>
+   <Todoitems ></Todoitems>
 
  </center> 
+ </TodoItemsContext.Provider>
  </>
  };
 

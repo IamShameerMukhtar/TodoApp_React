@@ -1,8 +1,14 @@
+
+import { TodoItemsContext } from "../store/todo-items-store"
+import { useContext } from "react"
 import Todoitem from "./Todoitem"
-const Todoitems=({todoitems,handleOnDeleteButton}) =>{
-  
-  
-    
+
+
+
+const Todoitems=({handleOnDeleteButton}) =>{
+  const Contextobj=useContext(TodoItemsContext)
+  const todoitems=Contextobj.todoitems;
+
   
   
   
