@@ -4,20 +4,43 @@ import { TodoItemsContext } from './store/todo-items-store';
 
 import Todoitems from './Components/Todoitems';
 import "./App.css";
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import CheckItems from './Components/CheckItems';
+
+//pure function 
+const todoitemsReducer=(currValue,action)=>{
+
+  let newTodoItem=currValue;
+  
+  if(action.type==="NEW_ITEM"){
+ 
+     newTodoItem=[...currValue,{
+  
+      todoName: action.payload.todoName ,
+      todoDate:action.payload.todoDate}];
+      
+
+}
+else if (action.type==="DELETE_ITEM"){
+ newTodoItem = currValue.filter(item=>item.todoName!==action.payload.todoName);
+  return newTodoItem;
+}
+return newTodoItem;
+}
+
+
+
+
+
+
 function App() {
  
 
 
 
 
-  let [todoitems,settodoitems]=useState( [
-    
-  ]); 
-
-
-
+  // let [todoitems,settodoitems]=useState( []); 
+  const [todoitems,dispatchTodo]= useReducer(todoitemsReducer,[])
 
 
 // Add Items
@@ -25,16 +48,19 @@ function App() {
   const handleNewItem=(todoName,todoDate)=>{
   if(todoName.length>=1 && todoDate){
     
-     settodoitems((currValue)=>{
-      const newTodoItem=[...currValue,{
-    
-        todoName: todoName ,
-        todoDate:todoDate}];
-        return newTodoItem;
+   const newItemAction={
+type:"NEW_ITEM" 
+,
+payload:{
+  todoName,
+  todoDate
 
-
-     })
-    
+}
+   }
+   dispatchTodo(newItemAction)
+   
+   
+   
     
     
     }
@@ -43,8 +69,13 @@ function App() {
  // Delete items using filter method
 const handleOnDeleteButton=(todoName,todoDate)=>{
    // filter method
-   const  newTodoItem = todoitems.filter(item=>item.todoName!==todoName);
-   settodoitems(newTodoItem)
+const DeleteTodoItems={
+type:"DELETE_ITEM",
+payload:{todoName:todoName}
+}
+dispatchTodo(DeleteTodoItems)
+
+  
      
 }
  
