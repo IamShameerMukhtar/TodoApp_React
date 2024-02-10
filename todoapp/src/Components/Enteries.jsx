@@ -16,17 +16,6 @@ const handleAddButtonClicked=(event)=>{
 const todoName= todonameElements.current.value
 const todoDate= tododateElements.current.value
 
-<<<<<<< HEAD
-=======
-}
-const handleDateChange=(event)=>{
-
-
-setTodoDate(event.target.value)
-}
-
-const handleAddButtonClicked=()=>{
->>>>>>> parent of 8f41ecf (Diff)
 handleNewItem(todoName,todoDate)
 tododateElements.current.value=""
 todonameElements.current.value=""
